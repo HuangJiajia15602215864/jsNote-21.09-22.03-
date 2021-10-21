@@ -9,7 +9,7 @@ JavaScript 是一种弱类型或者说动态语言,不用提前声明变量的�
     Boolean：typeof instance === "boolean"
     Number：typeof instance === "number"（双精度64位浮点型，要检查值是否大于或小于 +/-Infinity，你可以使用常量 Number.MAX_VALUE 和 Number.MIN_VALUE）
     String：typeof instance === "string
-    BigInt：typeof instance === "bigint"（任意精度表示整数，安全地存储和操作大整数，通过在整数末尾附加 n 或调用构造函数来创建的）
+    BigInt：typeof instance === "bigint"（ES2020新定义，任意精度表示整数，安全地存储和操作大整数，通过在整数末尾附加 n 或调用构造函数来创建的）
 */
 const x = 2n ** 53n; //9007199254740992n
 const y = x + 1n; //9007199254740993n
