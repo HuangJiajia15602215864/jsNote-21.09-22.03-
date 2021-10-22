@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>this</title>
+  <script>
+    // var x = 10;
+    // var obj = {
+    //   x: 20,
+    //   f: function () {
+    //     console.log(this.x); // 20，隐性绑定,这里 f 的this指向上下文 obj ,即输出 20
+    //     function foo() {
+    //       console.log(this.x);
+    //     }
+    //     foo(); // 10  '光杆司令'，默认绑定,这里this绑定的是window
+    //   }
+    // };
+    // obj.f();
+
+
+
+    // function foo(arg) {
+    //   this.a = arg;// window.a = 1  window.a = 10
+    //   return this // window   window
+    // };
+
+    // // 默认绑定 , this指向了window
+    // var a = foo(1);// window.a = window 后面变成window.a = 10
+    // var b = foo(10);// window.b = window
+
+    // console.log(a.a); // window.a.a = window 后面变成window.a.a = undefined
+    // console.log(b.a); // window.b.a = 10
+
+
+    // var x = 10;
+    // var obj = {
+    //   x: 20,
+    //   f: function () {
+    //     console.log(this.x);
+    //   }
+    // };
+    // var bar = obj.f;// bar是一个函数
+    // var obj2 = {
+    //   x: 30,
+    //   f: obj.f
+    // }
+    // obj.f();// 20 (隐性绑定)
+    // bar();// 10 (默认绑定)
+    // obj2.f();// 30 (隐性绑定)
+
+
+    // function foo() {
+    //   getName = function () { //这里的getName 将创建到全局window上
+    //     console.log(1);
+    //   };
+    //   return this;
+    // }
+    // foo.getName = function () { //这个getName和上面的不同，是直接添加到foo上的
+    //   console.log(2);
+    // };
+    // foo.prototype.getName = function () { // 这个getName直接添加到foo的原型上，在用new创建新对象时将直接添加到新对象上 
+    //   console.log(3);
+    // };
+    // var getName = function () { // 和foo函数里的getName一样, 将创建到全局window上
+    //   console.log(4);
+    // };
+
+    // function getName() { // 这个函数不会被使用，因为函数声明的提升优先级最高
+    //   console.log(5);
+    // }
+
+    // foo.getName(); // 2
+    // getName(); // 4 
+    // foo().getName(); // 1  将window.getName设置为1,返回window,故等价于 window.getName(); 输出 1
+    // getName(); // 1 // 刚刚上面的函数刚把window.getName设置为1,故同上 输出 1
+    // new foo.getName(); // 2 创建一个函数名为 foo.getName新对象，输出 2
+    // new foo().getName(); // 3 等价于 var obj = new foo();obj.getName(); 使用new后会将函数的prototype继承给 新对象
+    // new new foo().getName(); // 3  var obj = new foo();var obj1 = new obj.getName();
+
+
+    var people = {
+      Name: "海洋饼干",
+      getName: function () {
+        return () => {
+          console.log(this.Name);
+        }
+      }
+    };
+    var bar = people.getName(); //获得一个永远指向people的函数，不用想this了,岂不是美滋滋？
+    bar(); // 海洋饼干 
+
+
+    var obj = {
+      that: this,
+      bar: function () {
+        return () => {
+          console.log(this);
+        }
+      },
+      baz: () => {
+        console.log(this);
+      }
+    }
+    console.log(obj.that); // window  obj的当前作用域是window
+    obj.bar()(); // obj  用function包裹的目的就是将箭头函数绑定到当前的对象上
+    obj.baz(); // window  如果不用function（function有自己的函数作用域）将其包裹起来，那么默认绑定的父级作用域就是window
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
+window.a = 1
