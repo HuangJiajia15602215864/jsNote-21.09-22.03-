@@ -52,6 +52,19 @@ console.log(Boolean(new Boolean(false))) // true
 console.log(Number([1, 2, 3])) // NaN
 console.log(Number(new Date(2010, 0, 1))) // 1262275200000
 
+let a = {// 可以重写valueOf、toString和 Symbol.toPrimitive ，其中Symbol.toPrimitive在转基本类型时调⽤优先级最⾼。
+  valueOf() {
+  return 0;
+  },
+  toString() {
+  return '1';
+  },
+  [Symbol.toPrimitive]() {
+  return 2;
+  }
+ }
+ console.log(1 + a) // => 3
+ console.log('1' + a) // => '12
 
 /*
 相等（==）:强制类型转换并且比较不同类型的操作数
@@ -61,12 +74,16 @@ console.log(Number(new Date(2010, 0, 1))) // 1262275200000
 如果两个操作数是不同类型的，就会尝试在比较之前将它们转换为相同类型：
   当数字与字符串进行比较时，会尝试将字符串转换为数字值。
   如果操作数之一是Boolean，则将布尔操作数转换为1或0。
-  如果操作数之一是对象，另一个是数字或字符串，会尝试使用对象的valueOf()和toString()方法将对象转换为原始值。
+  如果操作数之一是对象，另一个是数字或字符串，会尝试使用对象的valueOf()和toString()方法(即toPrimitive)将对象转换为原始值。
 
 */
 0 == null;            // false
 0 == undefined;       // false
 null == undefined;    // true
+
+[] == ![] 
+// 1、右边因为有！，为布尔值false，则将布尔操作数转换为0
+// 2、左边为对象，ToPrimitive([]) = 0
 
 
 /*
@@ -80,6 +97,14 @@ console.log(+[]); // valueOf([])=>toString('')=>ToNumber(0)
 console.log(+['1']); // 1
 console.log(+['1', '2', '3']); // NaN
 console.log(+{}); // NaN
+
+
+/*
+四则运算符:
+只有当加法运算时，其中⼀⽅是字符串类型，就会把另⼀个也转为字符串类型。其他运算只
+要其中⼀⽅是数字，那么另⼀⽅就转为数字。并且加法运算会触发三种类型转换：将值转换
+为原始值，转换为数字，转换为字符串。
+*/
 
 
 https://github.com/mqyqingfeng/Blog/issues/159

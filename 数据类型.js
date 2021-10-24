@@ -7,7 +7,7 @@ JavaScript 是一种弱类型或者说动态语言,不用提前声明变量的�
   7 种原始类型，使用 typeof 运算符检查:
     undefined：typeof instance === "undefined"（已声明没被赋值的变量）
     Boolean：typeof instance === "boolean"
-    Number：typeof instance === "number"（双精度64位浮点型，要检查值是否大于或小于 +/-Infinity，你可以使用常量 Number.MAX_VALUE 和 Number.MIN_VALUE）
+    Number：typeof instance === "number"（双精度64位浮点型，包括NaN,要检查值是否大于或小于 +/-Infinity，你可以使用常量 Number.MAX_VALUE 和 Number.MIN_VALUE）
     String：typeof instance === "string
     BigInt：typeof instance === "bigint"（ES2020新定义，任意精度表示整数，安全地存储和操作大整数，通过在整数末尾附加 n 或调用构造函数来创建的）
 */
@@ -31,7 +31,14 @@ Object.getOwnPropertyNames(obj) // []
 Object.getOwnPropertySymbols(obj) // [ foo, bar ]
 /*
     null：typeof instance === "object"（空引用）
-  Object，使用 instanceof 检查:
+*/
+
+// 对于基本类型来说，如果使⽤字⾯量的⽅式，那么这个变量只是个字⾯量，只有在必要的时候才会转换为对应的类型
+let a = 111 // 这只是字⾯量，不是 number 类型
+a.toString() // 使⽤时候才会转换为对象类型
+
+/*
+  Object引用类型，使用 instanceof 检查:
     typeof instance === "object"
 
 

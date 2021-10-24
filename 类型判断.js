@@ -10,7 +10,7 @@ typeof operand
 */
 // 数值
 typeof 37 === 'number';
-typeof(42) === 'number';
+typeof (42) === 'number';
 typeof Math.LN2 === 'number';
 typeof Infinity === 'number';
 typeof NaN === 'number'; // 尽管它是 "Not-A-Number" (非数值) 的缩写
@@ -39,24 +39,28 @@ typeof Symbol.iterator === 'symbol';
 typeof undefined === 'undefined';
 
 // 对象
-typeof {a: 1} === 'object';
+typeof {
+  a: 1
+} === 'object';
 typeof [1, 2, 4] === 'object';
 typeof new Date() === 'object';
-typeof /regex/ === 'object'; 
+typeof /regex/ === 'object';
 typeof null === 'object';
+// 原因：在 JS 的最初版本中，使⽤的是 32 位系统，为了性能考虑使⽤低位存储了变量的类型信息， 000 开头代表是对象，然⽽ null 表示为全零，所以将它错误的判断为 object 。
 typeof new Boolean(true) === 'object';
 typeof new Number(1) === 'object';
 typeof new String('abc') === 'object';
 
 // 函数
-typeof function() {} === 'function';
+typeof
+function () {} === 'function';
 typeof class C {} === 'function'
 typeof Math.sin === 'function';
 
 
 
 /*
-instanceof关键字:检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上
+instanceof关键字:检测构造函数（类）的 prototype 属性是否出现在某个实例对象的原型链上
 object instanceof constructor
 */
 
@@ -65,8 +69,21 @@ function Car(make) {
 }
 const auto = new Car('Honda');
 
-console.log(auto instanceof Car);// true，因为Object.getPrototypeOf(auto) === Car.prototype
-console.log(auto instanceof Object);// true，因为Object.prototype.isPrototypeOf(auto) 返回 true
+console.log(auto instanceof Car); // true，因为Object.getPrototypeOf(auto) === Car.prototype
+console.log(auto instanceof Object); // true，因为Object.prototype.isPrototypeOf(auto) 返回 true
+
+// 实现instanceof
+function instanceof(left, right) {
+  let prototype = right.prototype  // 获得类型的原型
+  left = left.__proto__// 获得对象的原型
+  while (true) {// 判断对象的类型是否等于类型的原型
+    if (left === null)
+      return false
+    if (prototype === left)
+      return true
+    left = left.__proto__// 一直顺着原型链追溯原型
+  }
+}
 
 
 /*
@@ -85,4 +102,3 @@ toString.call(new String); // [object String]
 toString.call(Math); // [object Math]
 toString.call(undefined); // [object Undefined]
 toString.call(null); // [object Null]
-
