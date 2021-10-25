@@ -1,4 +1,26 @@
 /*
+new：创建一个用户定义的对象类型的实例或具有构造函数的内置对象的实例。实例可访问构造函数和prototype 中的属性
+new constructor[([arguments])](constructor:类或函数；arguments：被constructor调用的参数列表)
+*/
+function Otaku (name, age) {
+  this.name = name;
+  this.age = age;
+
+  this.habit = 'Games';
+}
+Otaku.prototype.strength = 60;
+Otaku.prototype.sayYourName = function () {
+  console.log('I am ' + this.name);
+}
+
+var person = new Otaku('Kevin', '18');// Otaku构造函数为new()的第一个参数
+console.log(person.name) // Kevin
+console.log(person.habit) // Games
+console.log(person.strength) // 60
+person.sayYourName(); // I am Kevin
+
+
+/*
 执行new实际上执行以下步骤：
 1. 新⽣成了⼀个对象
 2. 链接到原型
@@ -7,7 +29,7 @@
 */
 function create() {
  let obj = new Object() // 创建⼀个空的对象
- let Con = [].shift.call(arguments) // 获得构造函数，其中arguments为创建对象时的传参
+ let Con = [].shift.call(arguments) // 获得构造函数，其中arguments为创建对象时的传参（取出第一个参数，就是我们要传入的构造函数。此外因为 shift 会修改原数组，所以 arguments 会被去除第一个参数）
  obj.__proto__ = Con.prototype // 链接到原型
  let result = Con.apply(obj, arguments) // 绑定 this，执⾏构造函数
  return typeof result === 'object' ? result : obj // 确保 new 出来的是个对象
