@@ -75,7 +75,6 @@ let a = {// 可以重写valueOf、toString和 Symbol.toPrimitive ，其中Symbol
   当数字与字符串进行比较时，会尝试将字符串转换为数字值。
   如果操作数之一是Boolean，则将布尔操作数转换为1或0。
   如果操作数之一是对象，另一个是数字或字符串，会尝试使用对象的valueOf()和toString()方法(即toPrimitive)将对象转换为原始值。
-
 */
 0 == null;            // false
 0 == undefined;       // false
@@ -106,6 +105,22 @@ console.log(+{}); // NaN
 为原始值，转换为数字，转换为字符串。
 */
 
+
+/*
+隐式转换规则:
+1、转成string类型： +（字符串连接符）
+2、转成number类型：++/--(自增自减运算符) + - * / %(算术运算符) > < >= <= == != === !=== (关系运算符)
+3、转成boolean类型：!（逻辑非运算符)
+*/
+undefined >= undefined // false  （转换为NaN >= NaN，NaN 不等于 NaN，也不大于，所以是false）
+null >= null // true （转换成0 >= 0，0 等于 0，所以是true）
+[] == ![] // true 
+/*
+1、! 优先级高于 ==，[]不是假值，所以先转换成 [] == false
+2、右边为布尔值，false先转数字0，所以可转换为[] == 0
+3、左边为对象，[]调用toString转为 ''，转换为'' == 0
+4、左边为字符串，''转换为0，最终为 0 == 0）
+*/
 
 https://github.com/mqyqingfeng/Blog/issues/159
 https://github.com/mqyqingfeng/Blog/issues/164

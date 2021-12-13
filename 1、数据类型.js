@@ -41,7 +41,8 @@ a.toString() // 使⽤时候才会转换为对象类型
   Object引用类型，使用 instanceof 检查:
     typeof instance === "object"
 
-
+基本数据类型：存在栈内存里
+引用数据类型：指针存栈内存，指向堆内存中一块地址，内容存在堆内存中
 
 原始数据、基本类型
 一种既非对象也无方法的数据，所有基本类型的值都是不可改变的，但可以被替换。
@@ -74,3 +75,12 @@ BigInt 为大整数基本类型。
 Boolean 为布尔基本类型。
 Symbol 为字面量基本类型。
 */
+const s1 = 'Sunshine_Lin'
+const index = s1.indexOf('_') // 基本类型是一种既非对象也无方法的数据，实际上内部是通过转换为引用类型实现
+console.log(index) // 8
+
+var temp = new String('Sunshine_Lin') // 创建String类型的一个实例
+const index = temp.indexOf('_')// 在实例上调用指定的方法
+temp = null // 销毁这个实例
+console.log(index) // 8
+

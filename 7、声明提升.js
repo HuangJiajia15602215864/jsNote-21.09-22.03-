@@ -12,6 +12,15 @@ function b() {
   console.log('call b')
 }
 
+
+console.log(fun) // fun () {} 函数提升优先级>变量提升优先级
+// 函数表达式(变量声明，享受变量提升)
+var fun = function(name) {}
+// 函数声明(享受函数提升)
+function fun () {}
+console.log(fun) // fun (name) {} 覆盖
+
+
 /*
 执行 JS 代码的过程
   1、生成抽象语法树（AST），又分为了词法分析和语法分析两个阶段。
