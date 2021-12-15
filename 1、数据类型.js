@@ -28,7 +28,31 @@ obj[bar] = "bar"
 JSON.stringify(obj) // {}
 Object.keys(obj) // []
 Object.getOwnPropertyNames(obj) // []
-Object.getOwnPropertySymbols(obj) // [ foo, bar ]
+Object.getOwnPropertySymbols(obj) // [ Symbol(), Symbol() ]
+Reflect.ownKeys(obj)// [Symbol(), Symbol() ]
+/*
+Symbol的应用场景:
+1、使用Symbol来作为对象属性名（不会被枚举）
+2、使用Symbol来替代常量 const one = Symbol()
+3、使用Symbol定义类的私有属性，使属性无法在实例里获取到
+*/
+class Login {
+  constructor(username, password) {
+    const PASSWORD = Symbol()
+    this.username = username
+    this[PASSWORD] = password
+  }
+  checkPassword(pwd) { return this[PASSWORD] === pwd }
+}
+const login = new Login('123456', 'hahah')
+console.log(login.PASSWORD) // 报错
+console.log(login[PASSWORD]) // 报错
+
+
+
+
+
+
 /*
     null：typeof instance === "object"（空引用）
 */
