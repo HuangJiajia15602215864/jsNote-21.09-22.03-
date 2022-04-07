@@ -5,7 +5,7 @@ JavaScript 是一种弱类型或者说动态语言,不用提前声明变量的�
 
 数据类型（7种原始类型+object）
   7 种原始类型，使用 typeof 运算符检查:
-    undefined：typeof instance === "undefined"（已声明没被赋值的变量）
+    Undefined：typeof instance === "undefined"（已声明没被赋值的变量）
     Boolean：typeof instance === "boolean"
     Number：typeof instance === "number"（双精度64位浮点型，包括NaN,要检查值是否大于或小于 +/-Infinity，你可以使用常量 Number.MAX_VALUE 和 Number.MIN_VALUE）
     String：typeof instance === "string
@@ -62,11 +62,11 @@ let a = 111 // 这只是字⾯量，不是 number 类型
 a.toString() // 使⽤时候才会转换为对象类型
 
 /*
-  Object引用类型，使用 instanceof 检查:
+  Object引用类型，包含对象、数组、函数，使用 instanceof 检查:
     typeof instance === "object"
 
-基本数据类型：存在栈内存里
-引用数据类型：指针存栈内存，指向堆内存中一块地址，内容存在堆内存中
+基本数据类型：存在栈内存里，占据空间小、大小固定
+引用数据类型：指针存栈内存，指向堆内存中一块地址，内容存在堆内存中，占据空间大、大小不固定
 
 原始数据、基本类型
 一种既非对象也无方法的数据，所有基本类型的值都是不可改变的，但可以被替换。

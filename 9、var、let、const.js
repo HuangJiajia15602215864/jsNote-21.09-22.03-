@@ -3,14 +3,16 @@ let、const：
     声明一个作用域被限制在快级中的变量、语句或表达式
     不能重复声明已存在的变量
     有暂时死区，声明提升但初始化没有提升，不能使用
+    const声明变量必须设置初始值，不可更改（不允许改变指针的指向，相当于基本类型的值不可改，引用类型在堆中的变量可改）
 var：
     声明的变量只能是全局或者函数块
+    可以重复声明变量，后声明的同名变量会覆盖之前声明的遍历。
     声明和初始化提升
 */
 
 
 var liList = document.querySelectorAll('li') // 共5个li
-for( var i=0; i<liList.length; i++){
+for( var i=0; i<liList.length; i++){// i被提升为全局变量
   liList[i].onclick = function(){
     console.log(i)// 5,5,5,5,5,
   }

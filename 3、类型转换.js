@@ -14,12 +14,12 @@ alert(Number("-123")) // -123
 alert(Number("1.2")) // 1.2
 alert(Number("000123")) // 123
 alert(Number("123 123")) // NaN
-alert(Number("123z") );      // NaN（从字符串“读取”数字，读到 "z" 时出现错误）
+alert(Number("123z")); // NaN（从字符串“读取”数字，读到 "z" 时出现错误）
 alert(Number("0x11")) // 17
-alert(Number(true));        // 1
-alert(Number(false));       // 0
-alert(Number(undefined));       // NaN
-alert(Number(null));       // 0
+alert(Number(true)); // 1
+alert(Number(false)); // 0
+alert(Number(undefined)); // NaN
+alert(Number(null)); // 0
 
 alert(parseInt("3 abc")) // 3
 alert(parseInt("-12.34")) // -12
@@ -33,10 +33,10 @@ alert(parseInt("0.1")) // 0
 显式：Boolean()
 直观上为“空”的值（如 0、空字符串、null、undefined 和 NaN）将变为 false;其他值变成 true。
 */
-alert( Boolean(0) ); // false
-alert( Boolean("0") ); // true
-alert( Boolean("") ); // false
-alert( Boolean(" ") ); // 空白，也是 true（任何非空字符串都是 true）
+alert(Boolean(0)); // false
+alert(Boolean("0")); // true
+alert(Boolean("")); // false
+alert(Boolean(" ")); // 空白，也是 true（任何非空字符串都是 true）
 
 
 /*
@@ -48,23 +48,23 @@ alert( Boolean(" ") ); // 空白，也是 true（任何非空字符串都是 tru
 */
 var b = new Number(1);
 console.log(typeof b); // object
-console.log(Boolean(new Boolean(false))) // true
+console.log(Boolean(new Boolean(false))) // true  new Boolean(false)为一个对象
 console.log(Number([1, 2, 3])) // NaN
 console.log(Number(new Date(2010, 0, 1))) // 1262275200000
 
-let a = {// 可以重写valueOf、toString和 Symbol.toPrimitive ，其中Symbol.toPrimitive在转基本类型时调⽤优先级最⾼。
+let a = { // 可以重写valueOf、toString和 Symbol.toPrimitive ，其中Symbol.toPrimitive在转基本类型时调⽤优先级最⾼。
   valueOf() {
-  return 0;
+    return 0;
   },
   toString() {
-  return '1';
+    return '1';
   },
   [Symbol.toPrimitive]() {
-  return 2;
+    return 2;
   }
- }
- console.log(1 + a) // => 3
- console.log('1' + a) // => '12
+}
+console.log(1 + a) // => 3
+console.log('1' + a) // => '12
 
 /*
 相等（==）:强制类型转换并且比较不同类型的操作数
@@ -76,11 +76,11 @@ let a = {// 可以重写valueOf、toString和 Symbol.toPrimitive ，其中Symbol
   如果操作数之一是Boolean，则将布尔操作数转换为1或0。
   如果操作数之一是对象，另一个是数字或字符串，会尝试使用对象的valueOf()和toString()方法(即toPrimitive)将对象转换为原始值。
 */
-0 == null;            // false
-0 == undefined;       // false
-null == undefined;    // true
+0 == null; // false
+0 == undefined; // false
+null == undefined; // true
 
-[] == ![] 
+[] == ![]
 // 1、右边因为有！，为布尔值false，则将布尔操作数转换为0
 // 2、左边为对象，ToPrimitive([]) = 0
 
@@ -122,5 +122,5 @@ null >= null // true （转换成0 >= 0，0 等于 0，所以是true）
 4、左边为字符串，''转换为0，最终为 0 == 0）
 */
 
-https://github.com/mqyqingfeng/Blog/issues/159
-https://github.com/mqyqingfeng/Blog/issues/164
+https: //github.com/mqyqingfeng/Blog/issues/159
+https: //github.com/mqyqingfeng/Blog/issues/164

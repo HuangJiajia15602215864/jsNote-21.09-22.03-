@@ -5,7 +5,7 @@ call、apply、bind都是为了改变某个函数运行时的上下文而存在�
 
 /*
 call:使用一个指定的 this 值和单独给出的一个或多个参数来调用一个函数。(参数列表)
-function.call(thisArg, arg1, arg2, ...) 非严格模式下，则指定为 null 或 undefined 时会自动替换为指向全局对象;严格模式下，this 的值将会是 undefined
+function.call(thisArg, arg1, arg2, ...) 非严格模式下， 则指定为 null 或 undefined 时会自动替换为指向全局对象;严格模式下，this 的值将会是 undefined
 */
 // 调用父构造函数实现继承
 function Product(name, price) {
