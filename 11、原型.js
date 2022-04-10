@@ -53,6 +53,4 @@ Function.prototype 和 Object.prototype 是两个特殊的对象，他们由引�
 除了以上两个特殊对象，其他对象都是通过构造器 new 出来的
 函数的 prototype 是一个对象，也就是原型
 对象的 __proto__ 指向原型， __proto__ 将对象和原型连接起来组成了原型链
-
-
 */

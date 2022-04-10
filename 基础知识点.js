@@ -5,18 +5,6 @@ console.log(Number.MAX_SAFE_INTEGER)// 9007199254740991
 console.log(Number.MIN_SAFE_INTEGER)// -9007199254740991
 
 /*
-遍历对象属性，仅返回自身属性，不返回原型上属性
-*/
-function Person(name) {
-  this.name = name
-}
-Person.prototype.age = 23
-const person = new Person('Sunshine_lin')
-
-for (const key in person) { console.log(key) } // name age
-for (const key in person) {person.hasOwnProperty(key) && console.log(key)} // name
-
-/*
 valueOf与 toString
 1、valueOf偏向于运算，除了Date返回数值，其他都返回本身；toString偏向于显示，返回字符串
 2、对象转换时，优先调用toString

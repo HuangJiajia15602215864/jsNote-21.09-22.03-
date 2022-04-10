@@ -13,7 +13,7 @@ function A() {
       console.log(a)
   }
 }
-A()
+A() 
 B() // 1  闭包
 
 

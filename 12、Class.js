@@ -79,7 +79,8 @@ new 调用
 
 /*
 extend:
-Class通过extends关键字实现继承,子类必须在constructor方法中调用super方法，否则新建实例时会报错。因为子类没有自己的 this 对象，而是继承父类的 this 对象，然后对其进行加工。如果不调用 super 方法，子类就得不到 this 对象。
+Class通过extends关键字实现继承,子类必须在constructor方法中调用super方法，否则新建实例时会报错。
+因为子类没有自己的 this 对象，而是继承父类的 this 对象，然后对其进行加工。如果不调用 super 方法，子类就得不到 this 对象。
 */
 // class
 class Parent {

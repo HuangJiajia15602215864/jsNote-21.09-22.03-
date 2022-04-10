@@ -128,6 +128,7 @@ console.log(f.constructor===Array); // true
 obj instanceof Array // 检查Array的prototype属性是否出现在实例的原型链上（1、2、3同）
 obj.__proto__ === Array.prototype;
 Array.prototype.isPrototypeOf(obj)
+Object.getPrototypeOf(obj)
 
 Object.prototype.toString.call(obj).slice(8,-1) === 'Array';
 Array.isArrray(obj);

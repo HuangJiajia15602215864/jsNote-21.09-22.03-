@@ -6,20 +6,6 @@ undeclared：没有声明变量就直接使用
 var a; //undefined
 b; // b is not defined
 
-/*
-let & const与 var 的区别:
-var：存在变量提升，可重复声明同一变量，声明的变量均可改
-let：没有变量提升，不可重复声明同一变量，声明的变量均可改
-const：没有变量提升，不可重复声明同一变量，声明的基本数据类型不可改，引用类型可改属性，不可只声明变量而不赋值
-
-暂时性死区:
-使用let/const声明的情况下，还未到声明时，提前使用变量
-*/
-var a = 100;
-if (1) {
-  a = 10;
-  let a = 1; // Error:Cannot access 'a' before initialization
-}
 
 /*
 获取DOM元素的方法：
@@ -68,29 +54,6 @@ for (var i = 0; i < 10000; i++) {
 }
 document.body.appendChild(oFragmeng); //最后一次性添加到document中
 
-
-/*
-let块级作用域
-*/
-for (var i = 0; i < 3; i++) {
-  setTimeout(function () {
-    console.log(i); // 3，3，3
-  }, 0);
-};
-
-for (let i = 0; i < 3; i++) {
-  setTimeout(function () {
-    console.log(i); // 0 1 2
-  }, 0);
-};
-
-for (var i = 0; i < 3; i++) {
-  (function (i) {
-    setTimeout(function () {
-      console.log(i); // 0 1 2
-    }, 0, i)
-  })(i)
-};
 
 /*
 高阶函数:
