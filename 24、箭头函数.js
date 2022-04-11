@@ -23,7 +23,7 @@ var obj = {
 
 obj.a();    // 'OBJ'
 obj.b();    // 'GLOBAL'（定义对象的大括号{}是无法形成一个单独的执行环境的，它依旧是处于全局执行环境中。this永远指向它定义时所处的全局执行环境中的this）
-new obj.a()  // undefined
+new obj.a()  // undefined （创建新的对象没有id属性）
 new obj.b()  // Uncaught TypeError: obj.b is not a constructor
 
 
