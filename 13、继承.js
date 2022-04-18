@@ -104,7 +104,7 @@ Parent.prototype.getName = function () {
 function Child (name, age) {
   Parent.call(this, name);// 第一次调用
   this.age = age;
-
+ 
 }
 Child.prototype = new Parent();// 第二次调用
 Child.prototype.constructor = Child;

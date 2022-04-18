@@ -1,0 +1,46 @@
+// 用于标识 TypeScript 项目的根路径；
+// 用于配置 TypeScript 编译器；
+// 用于指定编译的文件。
+{
+  "compilerOptions": {// 设置与编译流程相关的选项
+    "target": "esnext",// 指定 ECMAScript 目标版本: 'ES3' (default)
+    "module": "esnext",// 指定使用模块
+    "strict": true,// 启用所有严格类型检查选项
+    "jsx": "preserve",// 指定 jsx 代码的生成
+    "importHelpers": true,// 从 tslib 导入辅助工具函数
+    "moduleResolution": "node",// 选择模块解析策略
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "suppressImplicitAnyIndexErrors":true,
+    "sourceMap": true,// 生成相应的 '.map' 文件
+    "baseUrl": ".",
+    "types": [// 需要包含的类型声明文件名列表
+      "node",
+      "webpack-env",
+      "jest"
+    ],
+    "paths": {// 模块名到基于 baseUrl 的路径映射的列表
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [// 指定要包含在编译中的库文件
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "include": [// 设置需要进行编译的文件，支持路径模式匹配；
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": [// 设置无需进行编译的文件，支持路径模式匹配；
+    "node_modules"
+  ]
+}
