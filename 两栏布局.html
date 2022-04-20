@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 一栏固定宽度，一栏自适应 */
+    /* 一栏不固定宽度，一栏自适应 */
+    /* 左侧float:left + 右侧margin-left */
+    /* .left {
+      float: left;
+      width: 100px;
+      height: 200px;
+      background-color: skyblue;
+    }
+
+    .right {
+      margin-left: 100px;
+      height: 200px;
+      background-color: pink;
+    } */
+
+    /* 左侧float:left + 右侧overflow:hidden */
+    /* 触发BFC，独立容器，保留流体特性，自动退避浮动元素宽度的距离 */
+    /* .left {
+      float: left;
+      width: 100px;
+      height: 200px;
+      background-color: blue;
+    }
+
+    .right {
+      height: 200px;
+      overflow: hidden;
+      background-color: pink;
+    } */
+
+    /* 利用弹性布局flex(推荐) */
+    /* .container {
+      display: flex;
+    }
+
+    .left {
+      height: 200px;
+      background-color: skyblue;
+    }
+
+    .right {
+      height: 200px;
+      flex: 1;
+      background-color: pink;
+    } */
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="left">我是left--我是left--我是left--我是left</div>
+    <div class="right">我是right我是right我是right我是right我是right我是right我是right我是right</div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  var climbStairs = function (n) {
+    var arr = new Array(n).fill(0)
+    arr[0] = 1
+    arr[1] = 2 // 2阶
+    for (let i = 2; i < n; i++) {
+      arr[i] = arr[i - 1] + arr[i - 2]
+    }
+    return arr[n - 1]
+  };
+
+  // 有效括号
+  var isValid = function (s) {
+    let len = s.length
+    if (len % 2) { // 奇数长度不是有效
+      return false
+    }
+
+    let map = new Map([
+      [')', '('],
+      ['}', '{'],
+      [']', '[']
+    ])
+    let getMap = '',
+      arr = []
+    for (let i = 0; i < len; i++) {
+      getMap = map.get(s[i])
+      if (!getMap) { // 左
+        arr.push(s[i])
+      } else { // 右
+        if (arr[arr.length - 1] == getMap) {
+          arr.pop()
+        } else {
+          return false
+        }
+      }
+    }
+    return arr.length == 0
+  };
+
+  // 判断一个数组是否是另一个数组的子集
+  function subset(paArr, chArr) {
+    let index = 0
+    for (let i = 0; i < chArr.length; i++) {
+      index = paArr.indexOf(chArr[i])
+      if (index == -1) {
+        return false
+      } else {
+        paArr.splice(index, 1)
+      }
+    }
+    return true
+  }
+
+  // 10个人抽奖，不能抽重复
+  function draw() {
+    var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    var result = [];
+    for (var i = 0; i < 10; i++) {
+      var ran = Math.floor(Math.random() * arr.length);
+      result.push(arr.splice(ran, 1)[0]);
+    };
+    return result
+  }
+
+  // 分两组 一组概率 70 一组 30 
+  function drawRatio(){
+    var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    if(Math.floor(Math.random() * arr.length) <= 6){
+      console.log('70%')
+    }else{
+      console.log('30%')
+    }
+  }
+  
+  
+</script>
+
+</html>

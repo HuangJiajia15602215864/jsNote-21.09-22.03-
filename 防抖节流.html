@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body style="height: 2000px;">
+</body>
+<script>
+  // 防抖：当已有定时器时,说明上次触发等待还没有到wait时间，取消后重新计时
+  function debounce(fn, wait) {
+    var timer = null;// 通过闭包缓存了一个定时器
+
+    return function () {
+      var context = this,
+        args = [...arguments];
+      if (timer) { // 如果此时存在定时器的话，则取消之前的定时器重新记时
+        clearTimeout(timer);
+        timer = null;
+      }
+      timer = setTimeout(() => { // 设置定时器，使事件间隔指定事件后执行
+        fn.apply(context, args);
+      }, wait);
+    };
+  }
+
+  // 节流：当已有定时器时，说明上次触发执行还没有到wait时间，直接不理；当没有定时器时，执行函数并wait后取消定时器
+  function throttle(fun, wait) {
+    let timer = null
+    return function () {
+      let context = this
+      let args = [...arguments]
+      if (!timer) {
+        fun.apply(context, args)
+        timer = setTimeout(() => {
+          timer = null
+        }, wait)
+      }
+    }
+  }
+
+  // window.onscroll = debounce(function () {
+  //   console.log('防抖')
+  // }, 2000)
+
+  window.onscroll = throttle(function () {
+    console.log('节流')
+  }, 2000)
+</script>
+
+</html>
